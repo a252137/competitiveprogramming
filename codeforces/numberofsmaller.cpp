@@ -2,40 +2,33 @@
 
 using namespace std;
 
-int main() {
-
+int main () {
     int n, m;
     scanf ("%d%d", &n, &m);
-
-    int vet[100010], vec[100010];
-
-    for (int i=1; i<=n; i++) scanf ("%d", &vet[i]);
-
-    for (int i=1; i<=m; i++) scanf ("%d", &vec[i]);
-
-    int i=1, j=1, k=1;
-
-    vet[n+1]=1000000010;
-    vec[m+1]=1000000010;
-
-    while (i<=n || j<=m) {
-
-        if (j>m || (i<=n && vet[i]<vec[j])) {
-
-            i++;
-
-        }
-
-        else {
-
-            printf ("%d ", i-1);
-            j++;
-
-        }
-
+    vector<int> a, b;
+    for (int i=1; i<=n; i++) {
+        int x;
+        scanf ("%d", &x);
+        a.push_back(x);
     }
-
+    for (int i=1; i<=m; i++) {
+        int x;
+        scanf ("%d", &x);
+        b.push_back(x);
+    }
+    int l=0, r=0;
+    while (l<(int)a.size() || r<(int)b.size()) {
+        if (l==(int)a.size()) {
+            printf ("%d ", l);
+            r++;
+        }
+        else if (r==(int)b.size()) break;
+        else if (a[l]<b[r]) l++;
+        else if (a[l]>=b[r]) {
+            printf ("%d ", l);
+            r++;
+        }
+    }
     printf ("\n");
-
+    return 0;
 }
-
