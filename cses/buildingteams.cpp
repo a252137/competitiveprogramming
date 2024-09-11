@@ -1,10 +1,10 @@
 #include <bits/stdc++.h>
- 
+
 using namespace std;
- 
+
 vector<int> grafo[100010];
 int ans[100010];
- 
+
 int main () {
     int n, m;
     scanf ("%d%d", &n, &m);
@@ -37,6 +37,16 @@ int main () {
                     }
                 }
             }
+            if (check == false) break;
+        }
+        if (check == false) break;
+    }
+    for (int i=1; i<=n; i++) {
+        if (ans[i]==0) ans[i] = 1;
+    }
+    for (int i=1; i<=n; i++) {
+        for (int j=0; j<(int)grafo[i].size(); j++) {
+            if (ans[i]==ans[grafo[i][j]]) check = false;
             if (check == false) break;
         }
         if (check == false) break;
